@@ -29,17 +29,13 @@ class Pagination {
 
   getPageItems(pageNumber) {
     let startIndex = (pageNumber - 1) * this.pageSize;
-    console.log("Start index", startIndex);
     let endIndex = startIndex + this.pageSize;
-    console.log("End index", endIndex);
     return this.items.slice(startIndex, endIndex);
   }
 }
 let listItems = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10];
 
 let pagination = new Pagination(listItems);
-console.log(pagination.getTotalPages()); // Output: 4
-console.log(pagination.getPageItems(1)); // Output: [p1, p2, p3]
 
 function displayPag(pageNumber) {
   let tBody = document.getElementById("t-body");
@@ -68,7 +64,7 @@ let pageLinks = document.querySelectorAll(".page-link");
 displayPag(1);
 for (let link of pageLinks) {
   link.addEventListener("click", function (event) {
-    event.preventDefault(); //prevents the link from navigating to the href value
+    event.preventDefault();
     let pageNumber = this.textContent;
     displayPag(pageNumber);
   });
